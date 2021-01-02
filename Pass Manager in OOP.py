@@ -35,10 +35,10 @@ class Encryption:
         pass
 
     def encrypt(self):
-        fern = open("C:/Users/zydmu/OneDrive/Desktop/Key/Key.txt", "rb")
+        fern = open("Enter location of your key", "rb")
         key = fern.read()
         cipher = Fernet(key)
-        filename = "C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt"
+        filename = "Enter location of your passwords"
         with open(filename, 'rb') as f:
             file = f.read()
             encrypted_text = cipher.encrypt(file)
@@ -53,15 +53,15 @@ class Decryption:
     def decryption(self):
         key_pass = getpass.getpass(prompt='Key:', stream=None)
         if key_pass == "123456":
-            fkey = open("C:/Users/zydmu/OneDrive/Desktop/Key/Key.txt", "rb")
+            fkey = open("Enter location of your key", "rb")
             key = fkey.read()
             cipher = Fernet(key)
-            with open('C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt', 'rb')as df:
+            with open('Enter location of your passwords', 'rb')as df:
                 encrypted_data = df.read()
 
             decrypted_file = cipher.decrypt(encrypted_data)
 
-            with open("C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt", "wb")as df:
+            with open("Enter location of your passwords", "wb")as df:
                 df.write(decrypted_file)
         else:
             print("Incorrect Key!")
@@ -98,7 +98,7 @@ def login():
                 date = p3.get_date()
                 print("Your password for " + serv1 + " is: " + pas1)
                 print("ALWAYS REMEMBER TO ENCRYPT YOUR PASSWORDS!!!")
-                filename = "C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt"
+                filename = "Enter location of your passwords"
                 with open(filename, 'a')as ef:
                     ef.write("\n")
                     ef.write(serv1 + ": " + pas1 + (" " * 82) + date)
@@ -110,7 +110,7 @@ def login():
                 date = p4.get_date()
                 print("Your password for " + serv2 + " is: " + pas2)
                 print("ALWAYS REMEMBER TO ENCRYPT YOUR PASSWORDS!!!")
-                filename = "C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt"
+                filename = "Enter location for your passwords"
                 with open(filename, 'a')as ef:
                     ef.write("\n")
                     ef.write(serv2 + ": " + pas2 + (" " * 82) + date)
@@ -123,7 +123,7 @@ def login():
                 date = p5.get_date()
                 print("Your password for " + serv3 + " is: " + pas3)
                 print("ALWAYS REMEMBER TO ENCRYPT YOUR PASSWORDS!!!")
-                filename = "C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt"
+                filename = "Enter location for your passwords"
                 text1 = serv3 + ": " + pas3 + (" " * 82) + date
                 with open(filename, 'a')as ef:
                     ef.write("\n")
@@ -141,7 +141,7 @@ def login():
             print("Successfully decrypted! Remember to encrypt your passwords after every session!!!")
 
         if input1 == "v":
-            project = open("C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt", "r")
+            project = open("Enter location of your passwords", "r")
             print(project.read())
             project.close()
 
