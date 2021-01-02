@@ -39,7 +39,7 @@ def encrypt_pass():
 def decrypt_pass():
     key_pass = input("Key: ")
     if key_pass == "123456":
-        fkey = open("enter location for your key, C:/Users/ etc...", "rb")
+        fkey = open("enter location of your key, C:/Users/ etc...", "rb")
         key = fkey.read()
         cipher = Fernet(key)
         with open('enter location where your passwords are stored, C:/Users/ etc...', 'rb')as df:

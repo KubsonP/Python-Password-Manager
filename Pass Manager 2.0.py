@@ -75,17 +75,18 @@ def login():
             key = fern.read()
             cipher = Fernet(key)
             service = input("Service: ")
+            whole = (service + " : " + pw + datetime.now().strftime(' |%Y-%m-%d |%H:%M:%S')).encode()
             print("Password for " + service + " is: " + pw)
-            with open("C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt", "a") as s:
-                s.write("\n")
-                s.write(service + " : " + pw + datetime.now().strftime(' |%Y-%m-%d |%H:%M:%S'))
+            encrypted_whole = cipher.encrypt(whole)
+            with open("C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt", "ab") as s:
+                s.write(encrypted_whole)
                 s.close()
-            file = "C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt"
-            with open(file, 'rb')as g:
-                ef_file = g.read()
-            encrypted_file = cipher.encrypt(ef_file)
-            with open(file, 'wb')as e:
-                e.write(encrypted_file)
+            # file = "C:/Users/zydmu/OneDrive/Desktop/Passwords/Passes.txt"
+            # with open(file, 'rb')as g:
+            #     ef_file = g.read()
+            # encrypted_file = cipher.encrypt(ef_file)
+            # with open(file, 'wb')as e:
+            #     e.write(encrypted_file)
 
         if input_ == "e":
             encrypt_pass()
