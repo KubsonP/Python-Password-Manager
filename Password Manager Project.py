@@ -19,16 +19,16 @@ pw = pas()
 
 
 def view():
-    project = open("enter location where your passwords are stored, C:/Users/ etc...", "r")
+    project = open("enter location where you want to store passwords like C:/Users/ etc...", "r")
     print(project.read())
     project.close()
 
 
 def encrypt_pass():
-    fern = open("enter location for your key, C:/Users/ etc...", "rb")
+    fern = open("enter location of your key, C:/Users/ etc...", "rb")
     key = fern.read()
     cipher = Fernet(key)
-    filename = "enter location where your passwords are stored, C:/Users/ etc..."
+    filename = "enter location where you want to store passwords like C:/Users/ etc..."
     with open(filename, 'rb')as f:
         e_file = f.read()
     encrypted_file = cipher.encrypt(e_file)
@@ -42,12 +42,12 @@ def decrypt_pass():
         fkey = open("enter location of your key, C:/Users/ etc...", "rb")
         key = fkey.read()
         cipher = Fernet(key)
-        with open('enter location where your passwords are stored, C:/Users/ etc...', 'rb')as df:
+        with open('enter location where you want to store passwords like C:/Users/ etc...', 'rb')as df:
             encrypted_data = df.read()
 
         decrypted_file = cipher.decrypt(encrypted_data)
 
-        with open("enter location where your passwords are stored, C:/Users/ etc...", "wb")as df:
+        with open("enter location where you want to store passwords like C:/Users/ etc...", "wb")as df:
             df.write(decrypted_file)
     else:
         print("Incorrect Key!")
@@ -71,11 +71,22 @@ def login():
         if input_ == "q":
             quit()
         if input_ == "c":
-            print("Password for " + username + " is: " + pw)
+            fern = open("enter location of your key, C:/Users/ etc...", "rb")
+            key = fern.read()
+            cipher = Fernet(key)
+            service = input("Service: ")
+            print("Password for " + service + " is: " + pw)
             with open("enter location where you want to store passwords like C:/Users/ etc...", "a") as s:
                 s.write("\n")
-                s.write(username + " : " + pw + datetime.now().strftime(' |%Y-%m-%d |%H:%M:%S'))
+                s.write(service + " : " + pw + datetime.now().strftime(' |%Y-%m-%d |%H:%M:%S'))
                 s.close()
+            file = "enter location where you want to store passwords like C:/Users/ etc..."
+            with open(file, 'rb')as g:
+                ef_file = g.read()
+            encrypted_file = cipher.encrypt(ef_file)
+            with open(file, 'wb')as e:
+                e.write(encrypted_file)
+
         if input_ == "e":
             encrypt_pass()
             print("Password successfully encrypted!")
