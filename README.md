@@ -6,3 +6,4 @@ which hashing doesn`t have. Hashing is of course safer thanks to that, but I wan
 Before running the program you need to create folder for storing your passwords and another folder for your key!
 
 If you're running Pass Manager in OOP in PyCharm you need to check the "Emulate terminal in output console" bracket in configuration for getpass module to work.
+In terminal it works without issues.
